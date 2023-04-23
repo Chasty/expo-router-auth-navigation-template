@@ -1,5 +1,5 @@
 import { useRouter, useSegments } from "expo-router";
-import React from "react";
+import React, { FC, ProviderProps, ReactNode } from "react";
 
 type UserCredentials = {
   email: string;
@@ -10,6 +10,11 @@ type CredentialsContext = {
   signIn: (userCredentials: UserCredentials) => void;
   signOut: () => void;
   user: UserCredentials;
+};
+
+type AuthProviderProps = {
+  userCredentials: UserCredentials;
+  children?: ReactNode;
 };
 
 const AuthContext = React.createContext<CredentialsContext>(null);
@@ -42,7 +47,7 @@ function useProtectedRoute(user: UserCredentials) {
   }, [user, segments]);
 }
 
-export function Provider(props) {
+export const Provider: FC<AuthProviderProps> = (props) => {
   const [user, setAuth] = React.useState<UserCredentials>(
     props.userCredentials
   );
@@ -60,4 +65,4 @@ export function Provider(props) {
       {props.children}
     </AuthContext.Provider>
   );
-}
+};
