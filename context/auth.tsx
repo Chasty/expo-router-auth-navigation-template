@@ -1,7 +1,18 @@
 import { useRouter, useSegments } from "expo-router";
 import React from "react";
 
-const AuthContext = React.createContext(null);
+type UserCredentials = {
+  email: string;
+  password: string;
+};
+
+type CredentialsContext = {
+  signIn: (userCredentials: UserCredentials) => void;
+  signOut: () => void;
+  user: UserCredentials;
+};
+
+const AuthContext = React.createContext<CredentialsContext>(null);
 
 // This hook can be used to access the user info.
 export function useAuth() {
@@ -9,7 +20,7 @@ export function useAuth() {
 }
 
 // This hook will protect the route access based on user authentication.
-function useProtectedRoute(user) {
+function useProtectedRoute(user: UserCredentials) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -32,14 +43,16 @@ function useProtectedRoute(user) {
 }
 
 export function Provider(props) {
-  const [user, setAuth] = React.useState(props.isAuthenticated);
+  const [user, setAuth] = React.useState<UserCredentials>(
+    props.userCredentials
+  );
 
   useProtectedRoute(user);
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => setAuth({}),
+        signIn: (userCredentials: UserCredentials) => setAuth(userCredentials),
         signOut: () => setAuth(null),
         user,
       }}
