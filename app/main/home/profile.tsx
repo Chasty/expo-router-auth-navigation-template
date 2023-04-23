@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../../../context/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
@@ -15,7 +15,9 @@ export default function Profile() {
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
-      <Button onPress={onLogOut} title="LogOut"></Button>
+      <Pressable onPress={onLogOut} style={styles.button}>
+        <Text style={{ color: "white" }}>Log Out</Text>
+      </Pressable>
     </View>
   );
 }
@@ -25,5 +27,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    width: "60%",
+    backgroundColor: "blue",
+    marginTop: 8,
+    borderRadius: 32,
+    alignItems: "center",
   },
 });

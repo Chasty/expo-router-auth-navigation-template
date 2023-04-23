@@ -1,6 +1,13 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TextInput } from "react-native-gesture-handler";
 import { useAuth } from "../../context/auth";
@@ -28,11 +35,13 @@ export default function Login() {
         value={password}
         placeholder="Type password"
       />
-      <Button onPress={onLogin} title="Login"></Button>
-      <Button
-        onPress={() => router.push("/register")}
-        title="Register"
-      ></Button>
+      <View style={styles.separator} />
+      <Pressable onPress={onLogin} style={styles.button}>
+        <Text style={{ color: "white" }}>Login</Text>
+      </Pressable>
+      <Pressable onPress={() => router.push("/register")} style={styles.button}>
+        <Text style={{ color: "white" }}>Register</Text>
+      </Pressable>
     </View>
   );
 }
@@ -43,12 +52,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  separator: {
+    marginTop: 16,
+  },
   textInput: {
     paddingHorizontal: 32,
     paddingVertical: 16,
     borderWidth: 1,
-    borderColor: "red",
+    borderColor: "grey",
     marginTop: 8,
     width: "60%",
+    borderRadius: 32,
+  },
+  button: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    width: "60%",
+    backgroundColor: "blue",
+    marginTop: 8,
+    borderRadius: 32,
+    alignItems: "center",
   },
 });
