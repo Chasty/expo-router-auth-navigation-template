@@ -13,6 +13,15 @@
 
 This project demonstrates how Expo Router could be used to create a basic authentication flow.
 
+## Preview
+
+
+
+https://user-images.githubusercontent.com/18494040/233865961-a8bc4672-e723-432e-9c23-b36d6d3b1e2c.mov
+
+
+
+
 ## 🧭 Navigation Structure
 
 ```bash title="File System"
