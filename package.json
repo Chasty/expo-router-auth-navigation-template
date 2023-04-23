@@ -1,10 +1,24 @@
 {
+  "name": "expo-router-template",
+  "version": "1.0.0",
+  "author": "Chasty coderessence@gmail.com",
+  "description": "An expo router navigation template",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chasty/expo-router-auth-navigation-template"
+  },
+  "keywords": [
+    "expo",
+    "expo router",
+    "template"
+  ],
+  "license": "ISC",
   "dependencies": {
     "@react-navigation/drawer": "^6.6.2",
     "expo": "^48.0.7",
@@ -36,8 +50,5 @@
   "overrides": {
     "metro": "^0.73.7",
     "metro-resolver": "^0.73.7"
-  },
-  "name": "my-router-app",
-  "version": "1.0.0",
-  "private": true
+  }
 }
