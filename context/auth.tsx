@@ -1,7 +1,7 @@
 import { useRouter, useSegments } from "expo-router";
-import React, { FC, ProviderProps, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 
-type UserCredentials = {
+export type UserCredentials = {
   email: string;
   password: string;
 };
@@ -9,15 +9,19 @@ type UserCredentials = {
 type CredentialsContext = {
   signIn: (userCredentials: UserCredentials) => void;
   signOut: () => void;
-  user: UserCredentials;
+  user: UserCredentials | null;
 };
 
 type AuthProviderProps = {
-  userCredentials: UserCredentials;
+  userCredentials: UserCredentials | null;
   children?: ReactNode;
 };
 
-const AuthContext = React.createContext<CredentialsContext>(null);
+const AuthContext = React.createContext<CredentialsContext>({
+  signIn: () => {},
+  signOut: () => {},
+  user: null,
+});
 
 // This hook can be used to access the user info.
 export function useAuth() {
@@ -25,7 +29,7 @@ export function useAuth() {
 }
 
 // This hook will protect the route access based on user authentication.
-function useProtectedRoute(user: UserCredentials) {
+function useProtectedRoute(user: UserCredentials | null) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -48,7 +52,7 @@ function useProtectedRoute(user: UserCredentials) {
 }
 
 export const Provider: FC<AuthProviderProps> = (props) => {
-  const [user, setAuth] = React.useState<UserCredentials>(
+  const [user, setAuth] = React.useState<UserCredentials | null>(
     props.userCredentials
   );
 

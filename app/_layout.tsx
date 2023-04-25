@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Stack } from "expo-router";
-import { Provider } from "../context/auth";
+import { Provider, UserCredentials } from "../context/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function AuthLayout() {
   const [isReady, setIsReady] = useState(false);
-  const [loadedUser, setLoadedUser] = useState(null);
+  const [loadedUser, setLoadedUser] = useState<UserCredentials | null>(null);
 
   const getUserFromStorage = async () => {
     const user = await AsyncStorage.getItem("user");
     if (user) {
-      setLoadedUser(JSON.stringify(user));
+      setLoadedUser(JSON.parse(user));
     }
     setIsReady(true);
   };

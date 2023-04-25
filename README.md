@@ -6,17 +6,28 @@
     &ensp;&mdash;&ensp;
     <a href="https://github.com/Chasty/expo-router-auth-navigation-template#-how-to-use-it"><b>Project Structure</b></a>
     &ensp;&mdash;&ensp;
-    <a href="https://github.com/Chasty/expo-router-auth-navigation-template#-how-to-customize-it"><b>Use it</b></a>
+    <a href="https://github.com/Chasty/expo-router-auth-navigation-template#-how-to-customize-it"><b>Develop it</b></a>
   </p>
   <br/>
 </div>
 
 This project demonstrates how Expo Router could be used to create a basic authentication flow.
 
+## ⬇️ How to use this template
+
+If you want to create your own initial project with this boilerplate template, use npm or yarn.
+
+- npm
+
+  `npx create-expo-app  your-app-name --template expo-router-template`
+
+- yarn
+
+  `yarn create expo-app your-app-name --template expo-router-template`
+
 ## 📱 Preview
 
 https://user-images.githubusercontent.com/18494040/233866169-89a9b6c7-be67-4459-9b9f-5b761137d25e.mov
-
 
 ## 🧭 Navigation Structure
 
@@ -43,13 +54,13 @@ app/
 - [`app`](./app) - The navigation structured with all the the screens on the app.
 - [`context`](./context) - The context for the authentication flow that expose hooks to access the context with `useAuth` and handle the authentication/authorization routing with `useProtectedRoute`.
 
-## 🚀 How to use it
+## 🚀 How to develop it
 
 To get your hands dirty, follow these steps.
 
-- `$ npm install` - This will install all the required dependencies.
+- `$ npm install` or `$ yarn install` - This will install all the required dependencies.
 
-- `$ npm start` - This will start the app, select a platform once complete.
+- `$ npm start` or `$ yarn start` - This will start the app, select a platform once complete.
 
 <div align="center">
   <br />
